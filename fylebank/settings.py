@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'fylebank.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'NAME': 'da4sj409khjk6q',
+        'USER': 'epelcbldkptmby',
+        'PASSWORD': 'a400ec9cbdd3313c23c624226052419640e99dd937aa10354873eedd4d871076',
+        'HOST': 'ec2-35-170-85-206.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
