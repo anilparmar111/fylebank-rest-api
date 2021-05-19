@@ -24,7 +24,7 @@ def autocomplete(request, *args, **kwargs):
         if limit == None:
             return JsonResponse({'message': 'invalid argument'}, status=status.HTTP_404_NOT_FOUND)
         offset = request.query_params.get('offset', None)
-        if q == None:
+        if offset == None:
             return JsonResponse({'message': 'invalid argument'}, status=status.HTTP_404_NOT_FOUND)
         limit=int(limit)
         offset=int(offset)
