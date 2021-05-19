@@ -9,6 +9,11 @@ from . serializers import BankSerializer,BrancheSerializer
 from rest_framework.decorators import api_view
 
 
+def give_format(request):
+    return JsonResponse({'Endpoint': '/api/branches/autocomplete?q=<> please use this format'}, status=status.HTTP_404_NOT_FOUND)
+
+
+
 @api_view(['GET'])
 def autocomplete(request, *args, **kwargs):
     try:
