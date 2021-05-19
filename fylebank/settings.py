@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-@g+jkn08u%3lj*#-+m=l*#0+74l^znuv3h=g^3df*6=zw-au0*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fylebank-rest-rapi.herokuapp.com','127.0.0.1']
 
 
 # Application definition
