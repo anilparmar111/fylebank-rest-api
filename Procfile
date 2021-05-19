@@ -1,1 +1,1 @@
-web: gunicorn fylebank-rest-api.wsgi
+web: gunicorn fylebank.wsgi
