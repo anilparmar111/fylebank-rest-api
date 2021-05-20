@@ -15,6 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import (
+handler400, handler403, handler404, handler500
+)
+
+handler400 = 'bankapi.views.give_format'
+handler403 = 'bankapi.views.give_format'
+handler404 = 'bankapi.views.give_format'
+handler500 = 'bankapi.views.give_format'
 
 urlpatterns = [
     path('admin/', admin.site.urls),

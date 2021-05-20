@@ -10,7 +10,7 @@ from rest_framework.decorators import api_view
 from django.db.models import Q
 
 
-def give_format(request):
+def give_format(request,exception=None):
     return JsonResponse({'Endpoint': '/api/branches/autocomplete?q=<> please use this format'}, status=status.HTTP_404_NOT_FOUND)
 
 
