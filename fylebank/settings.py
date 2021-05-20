@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-@g+jkn08u%3lj*#-+m=l*#0+74l^znuv3h=g^3df*6=zw-au0*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fylebank-rest-rapi.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['fylebank-rest-rapi.herokuapp.com','127.0.0.1','http://localhost:4200/']
 
 
 # Application definition
@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
