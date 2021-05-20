@@ -7,6 +7,7 @@ from rest_framework import status
 from . models import Bank,Branche
 from . serializers import BankSerializer,BrancheSerializer
 from rest_framework.decorators import api_view
+from django.db.models import Q
 
 
 def give_format(request):
@@ -16,21 +17,29 @@ def give_format(request):
 
 @api_view(['GET'])
 def autocomplete(request, *args, **kwargs):
+
     try:
+
         q = request.query_params.get('q',None)
         if q==None:
             return JsonResponse({'message': 'invalid argument'}, status=status.HTTP_404_NOT_FOUND)
+
         limit = request.query_params.get('limit', None)
         if limit == None:
             return JsonResponse({'message': 'invalid argument'}, status=status.HTTP_404_NOT_FOUND)
+
         offset = request.query_params.get('offset', None)
         if offset == None:
             return JsonResponse({'message': 'invalid argument'}, status=status.HTTP_404_NOT_FOUND)
+
         limit=int(limit)
         offset=int(offset)
+
         queryset = Branche.objects.filter(branch__icontains=q).order_by('ifsc')[offset:offset+limit]
         serializer = BrancheSerializer(queryset, many=True)
+
         return Response(serializer.data)
+
     except Branche.DoesNotExist:
         return JsonResponse({'message': 'no result found'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -41,12 +50,37 @@ def autocomplete(request, *args, **kwargs):
 
 @api_view(['GET'])
 def bank_list(request):
+
     querySet=Bank.objects.all()
     serializer=BankSerializer(querySet,many=True)
+
     return Response(serializer.data)
 
 
 @api_view(['GET'])
 def search(request):
-    return JsonResponse({'message': 'no result found'}, status=status.HTTP_404_NOT_FOUND)
+
+    try:
+        print("ok")
+        q = request.query_params.get('q',None)
+        if q==None:
+            return JsonResponse({'message': 'invalid argument'}, status=status.HTTP_404_NOT_FOUND)
+
+        limit = request.query_params.get('limit', None)
+        if limit == None:
+            return JsonResponse({'message': 'invalid argument'}, status=status.HTTP_404_NOT_FOUND)
+
+        offset = request.query_params.get('offset', None)
+        if offset == None:
+            return JsonResponse({'message': 'invalid argument'}, status=status.HTTP_404_NOT_FOUND)
+
+        limit=int(limit)
+        offset=int(offset)
+        queryset=Branche.objects.filter(Q(branch__icontains=q) | Q(state__icontains=q) | Q(address__icontains=q) | Q(district__icontains=q) | Q(city__icontains=q)).order_by('ifsc')[offset:offset+limit]
+        serializer = BrancheSerializer(queryset, many=True)
+
+        return Response(serializer.data)
+
+    except Branche.DoesNotExist:
+        return JsonResponse({'message': 'no result found'}, status=status.HTTP_404_NOT_FOUND)
     
