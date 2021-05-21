@@ -285,6 +285,9 @@ heroku config -s | grep DATABASE_URL
 After That From The Heroku DashBoard We Can Get Name,User,password,host Of Database.
 We Have To Add That Data In To Our settings.py File
 
+also we have to add url in our allowed host in settings.py
+ALLOWED_HOSTS = ['fylebank-rest-rapi.herokuapp.com','127.0.0.1']
+
 
 ## Step 07: building the app locally
 Run the following command to test Heroku deployment locally. Make sure you're the root of the project.
