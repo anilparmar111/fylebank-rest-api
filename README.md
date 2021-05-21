@@ -147,7 +147,7 @@ whitenoise==5.2.0
 
 
 ## Step 02: Enable Middlware 
-Edit  ```settings.py``` file and add CorsMiddleware to the ```MIDDLEWARE``` list. Order Of MIDDLEWARE Must Be Followed Other Wise When We Use That API In Our Then We Gate Error Of CORS Header.
+Edit  ```settings.py``` file and add CorsMiddleware to the ```MIDDLEWARE``` list. Order Of MIDDLEWARE Must Be Followed Other Wise When We Use That API In Our Application Then We Gate Error Of CORS Header.
 ```python
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
